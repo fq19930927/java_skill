@@ -1,5 +1,5 @@
 /*
- * @Copyright: 2018-2019 taojiji All rights reserved.
+ * @Copyright: 2018-2019 liuxing All rights reserved.
  */
 package com.example.java_skill.jdk8.stream;
 

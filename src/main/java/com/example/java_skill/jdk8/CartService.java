@@ -1,5 +1,5 @@
 /*
- * @Copyright: 2018-2019 taojiji All rights reserved.
+ * @Copyright: 2018-2019 liuxing All rights reserved.
  */
 package com.example.java_skill.jdk8;
 
@@ -58,5 +58,13 @@ public class CartService {
         carSkuList.add(new Sku(696968, "TensorFlow进阶指南",
                 85.10, 1,
                 85.10, SkuCategoryEnum.BOOKS));
+    }
+
+    /**
+     * 返回所有购物车商品列表
+     * @return
+     */
+    public static List<Sku> getCartSukList() {
+        return carSkuList;
     }
 }
