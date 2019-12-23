@@ -7,6 +7,8 @@ import com.example.java_skill.jdk8.stream.SkuCategoryEnum;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 /**
  * @author liuxing
@@ -27,7 +29,7 @@ public class CartService {
                 4999.00, 1,
                 4999.00, SkuCategoryEnum.ELECTRONICS));
 
-       carSkuList.add(new Sku(642934, "VR一体机",
+        carSkuList.add(new Sku(642934, "VR一体机",
                 2299.00, 1,
                 2299.00, SkuCategoryEnum.ELECTRONICS));
 
@@ -62,9 +64,24 @@ public class CartService {
 
     /**
      * 返回所有购物车商品列表
+     *
      * @return
      */
-    public static List<Sku> getCartSukList() {
+    public static List<Sku> getCartSkuList() {
         return carSkuList;
     }
+
+    /**
+     * 根据条件筛选购物车集合
+     *
+     * @param skuList
+     * @param predicate
+     * @return
+     */
+    public static List<Sku> filterSkuList(List<Sku> skuList, Predicate<Sku> predicate) {
+        return skuList.stream().filter(e -> predicate.test(e)).collect(Collectors.toList());
+    }
+
+    public static void main(String[] args) {
+        List<Sku> list = filterSkuList(getCartSkuList(), (Sku sku) -> sku.getTotalPrice() > 2000); }
 }
