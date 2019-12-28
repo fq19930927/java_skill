@@ -1,7 +1,7 @@
 /*
  * @Copyright: 2018-2019 liuxing All rights reserved.
  */
-package com.example.java_skill.jdk8.stream;
+package com.example.java_skill.jdk8;
 
 /**
  * 商品类型枚举

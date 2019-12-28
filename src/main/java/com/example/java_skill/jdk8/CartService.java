@@ -3,8 +3,6 @@
  */
 package com.example.java_skill.jdk8;
 
-import com.example.java_skill.jdk8.stream.SkuCategoryEnum;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
