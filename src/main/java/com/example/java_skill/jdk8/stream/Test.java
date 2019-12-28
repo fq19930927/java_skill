@@ -79,9 +79,26 @@ public class Test {
                 .forEach(e -> System.out.println(e));
     }
 
+    /**
+     * skip:有状态的中间操作(跳过前n条数据)
+     */
+    public static void skipTest() {
+        cartSkuList.stream().sorted(Comparator.comparing(Sku::getTotalPrice))
+                .skip(6)
+                .forEach(e -> System.out.println(JSON.toJSONString(e, true)));
+    }
 
+    /**
+     * limit:有状态的中间操作，可以与skip结合模拟分页效果
+     */
+    public static void limitTest() {
+        cartSkuList.stream().sorted(Comparator.comparing(Sku::getTotalPrice))
+                .skip(1 * 3)
+                .limit(3)
+                .forEach(e -> System.out.println(JSON.toJSONString(e, true)));
+    }
     public static void main(String[] args) {
-        distinctTest();
+        limitTest();
     }
 
 }
