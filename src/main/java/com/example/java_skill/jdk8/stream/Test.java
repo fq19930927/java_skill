@@ -9,9 +9,7 @@ import com.example.java_skill.jdk8.CartService;
 import com.example.java_skill.jdk8.Sku;
 import com.example.java_skill.jdk8.SkuCategoryEnum;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 
@@ -97,8 +95,66 @@ public class Test {
                 .limit(3)
                 .forEach(e -> System.out.println(JSON.toJSONString(e, true)));
     }
+
+    /**
+     * allMatch:终端短路操作，是否全部匹配
+     */
+    public static void allMatchTest() {
+        boolean match = cartSkuList.stream().allMatch(e -> e.getTotalPrice() > 1000);
+        System.out.println(match);
+    }
+
+    /**
+     * anyMatch:终端短路操作，是否有一个及以上匹配
+     */
+    public static void anyMatchTest() {
+        boolean match = cartSkuList.stream().anyMatch(e -> e.getTotalPrice() > 1000);
+        System.out.println(match);
+    }
+
+    /**
+     * noneMatch:终端短路操作，是否所有都匹配不上
+     */
+    public static void noneMatchTest() {
+        boolean match = cartSkuList.stream().noneMatch(e -> e.getTotalPrice() > 1000);
+        System.out.println(match);
+    }
+
+    /**
+     * findFirst:终端短路操作,找到第一个
+     */
+    public static void findFirstTest() {
+        Optional<Sku> optional = cartSkuList.stream().findFirst();
+        System.out.println(JSONObject.toJSONString(optional.get(), true));
+    }
+
+    /**
+     * findAny:终端短路操作,找到任意一个(并行时比findFirst快)
+     */
+    public static void findAnyTest() {
+        Optional<Sku> optional = cartSkuList.stream().findAny();
+        System.out.println(JSONObject.toJSONString(optional.get(), true));
+    }
+
+    /**
+     * max:终端非短路操作,找到最大值
+     */
+    public static void maxTest() {
+        OptionalDouble max = cartSkuList.stream().mapToDouble(Sku::getTotalPrice).max();
+        System.out.println(JSONObject.toJSONString(max.getAsDouble(), true));
+    }
+
+    /**
+     * count:终端非短路操作,总数
+     */
+    public static void countTest() {
+        long count = cartSkuList.stream().count();
+        System.out.println(count);;
+    }
+
+
     public static void main(String[] args) {
-        limitTest();
+        countTest();
     }
 
 }
